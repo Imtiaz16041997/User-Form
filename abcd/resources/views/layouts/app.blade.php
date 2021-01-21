@@ -13,47 +13,48 @@
         <nav class="p-6 bg-white flex justify-between mb-6">
             <ul class="flex items-center">
                 <li>
-                    <a href="" class="p-5">Home</a>
+                    <a href="" class="p-3">Home</a>
                 </li>
 
                 <li>
-                    <a href=""class="p-5">Dashboard</a>
+                    <a href=""class="p-3">Dashboard</a>
                 </li>
 
                 <li>
-                    <a href=""class="p-5">Post</a>
+                    <a href=""class="p-3">Post</a>
                 </li>
             </ul>
 
             <ul class="flex items-center">
 
                 {{-- Authenticated state here --}}
-
-                @if (auth()->user())
-
                 {{-- //when user logged in, showing their Name and Logout option --}}
 
-                <li>
-                    <a href="" class="p-5"> Ibnul Imtiaz</a>
-                </li>
+            @auth
 
-                <li>
-                    <a href=""class="p-5">Logout</a>
-                </li>
+                    <li>
+                        <a href="" class="p-3"> Ibnul Imtiaz</a>
+                    </li>
 
-                @else
+                    <li>
+                        <a href=""class="p-3">Logout</a>
+                    </li>
+
+            @endauth
+
+            @guest
                     {{-- # code... otherwise showing this --}}
 
                 <li>
-                    <a href=""class="p-5">Login</a>
+                    <a href="{{route('login')}}" class="p-3">Login</a>
                 </li>
 
                 <li>
-                    <a href="{{route('register')}}"class="p-5">Register</a>
+                    <a href="{{route('register')}}" class="p-3">Register</a>
                 </li>
 
 
-                @endif
+            @endguest
 
 
             </ul>
