@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>abcd</title>
+    <title>User-Form</title>
 
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
@@ -26,9 +26,23 @@
             </ul>
 
             <ul class="flex items-center">
+
+                {{-- Authenticated state here --}}
+
+                @if (auth()->user())
+
+                {{-- //when user logged in, showing their Name and Logout option --}}
+
                 <li>
                     <a href="" class="p-5"> Ibnul Imtiaz</a>
                 </li>
+
+                <li>
+                    <a href=""class="p-5">Logout</a>
+                </li>
+
+                @else
+                    {{-- # code... otherwise showing this --}}
 
                 <li>
                     <a href=""class="p-5">Login</a>
@@ -38,9 +52,10 @@
                     <a href="{{route('register')}}"class="p-5">Register</a>
                 </li>
 
-                <li>
-                    <a href=""class="p-5">Logout</a>
-                </li>
+
+                @endif
+
+
             </ul>
 
         </nav>
