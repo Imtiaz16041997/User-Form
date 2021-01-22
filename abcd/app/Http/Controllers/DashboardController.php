@@ -16,7 +16,7 @@ class DashboardController extends Controller
     public function index()
     {
         // dd(auth()->user()->posts);
-        dd(Post::find(12)->created_at);
+        // dd(Post::find(13)->created_at);
         return view('dashboard');
     }
 }
