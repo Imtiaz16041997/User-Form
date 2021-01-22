@@ -14,9 +14,6 @@ class PostLikeController extends Controller
     }
 
 
-
-
-
     public function store(Post $post, Request $request)
     {
         if($post->likedBy($request->user())){

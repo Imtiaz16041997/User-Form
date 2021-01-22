@@ -9,7 +9,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::paginate(20); //Laravel collection library
+        $posts = Post::latest()->with(['user', 'likes'])->paginate(20); //Laravel collection library
 
         return view ('posts.index',[
             'posts' => $posts
@@ -26,5 +26,18 @@ class PostController extends Controller
 
         return back();
 
+    }
+
+    public function destroy(Post $post)
+    {
+        // if(!$post->ownedBy(auth()->user())){
+
+        //     dd('no');
+        // }
+
+        $this->authorize('delete',$post);
+        $post->delete();
+
+        return back();
     }
 }
